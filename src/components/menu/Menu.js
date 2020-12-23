@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "reactstrap";
 import "./../../css/CardCSS.css";
+import DishDetails from "./dishDetails";
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -20,52 +21,6 @@ class Menu extends Component {
   onDishSelect(dish) {
     this.setState({ selectedDish: dish });
   }
-
-  renderDish(dish) {
-    const cardBody = {
-      borderRadius: "10px",
-      border: "1px solid gray",
-      backgroundColor: "rgb(250, 209, 216)",
-    };
-    const comments = {
-      maxHeight: "360px",
-      overflowY: "scroll",
-    };
-    if (dish != null) {
-      const val = dish.comments.map((comment) => {
-        return (
-          <CardBody style={cardBody} key={comment.id}>
-            <CardText>
-              {comment.comment}
-              <br />
-              --{comment.author}
-              {comment.date}
-            </CardText>
-          </CardBody>
-        );
-      });
-      return (
-        <>
-          <div className="col-12 col-md-5 m-1">
-            <Card>
-              <CardImg top src={dish.image} alt={dish.name} />
-              <CardBody>
-                <CardTitle>{dish.name}</CardTitle>
-                <CardText>{dish.description}</CardText>
-              </CardBody>
-            </Card>
-          </div>
-          <div className="col-12 col-md-5 m-1">
-            <div style={comments}>
-              <h5>Comments</h5>
-              {val}
-            </div>
-          </div>
-        </>
-      );
-    } else return <div></div>;
-  }
-
   active(label) {
     const labelCSS = {
       top: "70%",
@@ -135,7 +90,7 @@ class Menu extends Component {
     return (
       <div className="container">
         <div className="row">{menu}</div>
-        <div className="row">{this.renderDish(this.state.selectedDish)}</div>
+        <DishDetails dish={this.state.selectedDish} />
       </div>
     );
   }
