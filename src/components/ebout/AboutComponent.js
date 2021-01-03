@@ -39,8 +39,8 @@ function RenderLeaderItems({ leader }) {
 }
 
 function About(props) {
-  const leaders = props.leaders.map((leader) => {
-    return <RenderLeaderItems leader={leader} />;
+  const leaders = props.leaders.map((leader,i) => {
+    return <RenderLeaderItems leader={leader} key={i}/>;
   });
 
   return (

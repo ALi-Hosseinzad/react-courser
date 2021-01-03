@@ -15,6 +15,11 @@ import {
   FormGroup,
   Input,
   Label,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -66,7 +71,7 @@ class Header extends Component {
     const sign = <FontAwesomeIcon icon={faSign} />;
     const address = <FontAwesomeIcon icon={faAddressCard} />;
     return (
-      <React.Fragment>
+      <div>
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
@@ -151,29 +156,29 @@ class Header extends Component {
         </Modal>
         <Jumbotron>
           <div className="container">
-            <div className="row row-header">
-              <div className="col-12 col-sm-12 header">
-                <div className="col-12 col-sm-3 headerImg">
-                  <img
-                    src="https://images.happycow.net/venues/1024/12/28/hcmp122874_523189.jpeg"
-                    height="300"
-                    width="200"
-                    alt="Ristorante Con Fusion"
-                  />
-                </div>
-                <div className="col-12 col-sm-6 headerText">
-                  <h1>Ristorante Con Fusion</h1>
-                  <p>
+            <div className="row row-header header">
+              <Card className="headerImg">
+                <CardImg
+                  src="https://images.happycow.net/venues/1024/12/28/hcmp122874_523189.jpeg"
+                  height="300"
+                  width="200"
+                  alt="Ristorante Con Fusion"
+                />
+              </Card>
+              <Card className="headerText">
+                <CardBody>
+                  <CardTitle className="headerTitle">Ristorante Con Fusion</CardTitle>
+                  <CardText>
                     We take inspiration from the World's best cuisines, and
                     create a unique fusion experience. Our lipsmacking creations
                     will tickle your culinary senses!
-                  </p>
-                </div>
-              </div>
+                  </CardText>
+                </CardBody>
+              </Card>
             </div>
           </div>
         </Jumbotron>
-      </React.Fragment>
+      </div>
     );
   }
 }
