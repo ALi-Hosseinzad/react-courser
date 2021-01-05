@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Loading } from '../Loading/LoadingComponent';
+import { baseUrl } from '../shared/baseURL';
 
 function active(label) {
   const labelCSS = {
@@ -39,27 +40,33 @@ const image = {
   height: "350px",
 };
 const title = {
-  color: "white",
+  color: "black",
   fontSize: "large",
   fontWeight: "bold",
   textAlign: "center",
+  backgroundColor:"yellow",
+  width:"170px",
+  margin:"auto",
+  borderRadius:"5px",
+  padding:"1px 5px"
 };
 const price = {
   top: "80%",
   left: "44%",
-  color: "rgb(5, 133, 238)",
+  color: "blue",
   position: "absolute",
   fontWeight: "bold",
   fontSize: "medium",
   backgroundColor: "white",
   width: "50px",
   borderRadius: "10px",
+  padding:"1px 3px"
 };
 function RenderMenuItem({ dish, onClick }) {
   return (
     <Card style={card}>
       <Link to={`/menu/${dish.id}`}>
-        <CardImg style={image} src={dish.image} alt={dish.name} />
+        <CardImg style={image} src={baseUrl+dish.image} alt={dish.name} />
         <CardImgOverlay>
           <CardTitle style={title}>{dish.name}</CardTitle>
           <CardText style={active(dish.label)} className="label">

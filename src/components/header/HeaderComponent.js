@@ -23,6 +23,7 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { baseUrl } from '../shared/baseURL';
 import {
   faHome,
   faInfo,
@@ -77,7 +78,7 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
               <img
-                src="https://kyuheejogd.files.wordpress.com/2013/07/fusion_final2.png"
+                src={baseUrl+"/images/logo.png"}
                 height="30"
                 width="41"
                 alt="Ristorante Con Fusion"

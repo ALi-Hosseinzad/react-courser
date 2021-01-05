@@ -8,6 +8,7 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { baseUrl } from '../shared/baseURL';
 
 function RenderLeaderItems({ leader }) {
   const leaderStyle = {
@@ -22,7 +23,7 @@ function RenderLeaderItems({ leader }) {
           <Media
             object
             style={{ width: "180px" }}
-            src={leader.image}
+            src={baseUrl+leader.image}
             alt={leader.name}
           />
         </Media>
@@ -39,7 +40,7 @@ function RenderLeaderItems({ leader }) {
 }
 
 function About(props) {
-  const leaders = props.leaders.map((leader,i) => {
+  const leaders = props.leaders.leaders.map((leader,i) => {
     return <RenderLeaderItems leader={leader} key={i}/>;
   });
 

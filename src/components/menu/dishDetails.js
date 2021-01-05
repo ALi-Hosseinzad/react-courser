@@ -20,6 +20,7 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Loading } from "../Loading/LoadingComponent";
+import { baseUrl } from "../shared/baseURL";
 
 const cardBody = {
   borderRadius: "10px",
@@ -60,7 +61,7 @@ const description = {
   textJustify: "inter-word",
 };
 const span = <span style={{ margin: "0px 120px" }}> </span>;
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments,postComment, dishId }) {
   if (comments != null) {
     const val = comments.map((comment) => {
       return (
@@ -80,12 +81,10 @@ function RenderComments({ comments, addComment, dishId }) {
     });
     return (
       <div className="col-12 col-md-5 m-1">
-        <div style={CommentStyle}>
-          <h5>Comments</h5>
-          {val}
-        </div>
+        <h5>Comments</h5>
+        <div style={CommentStyle}>{val}</div>
         <div style={CommentFormStyle}>
-          <CommentForm dishId={dishId} addComment={addComment} />
+          <CommentForm dishId={dishId} postComment={postComment} />
         </div>
       </div>
     );
@@ -96,7 +95,7 @@ function RenderDish({ dish }) {
     return (
       <div className="col-12 col-md-5 m-1">
         <Card>
-          <CardImg top src={dish.image} alt={dish.name} style={img} />
+          <CardImg top src={baseUrl + dish.image} alt={dish.name} style={img} />
           <CardBody>
             <CardTitle style={title}>{dish.name}</CardTitle>
             <CardText style={category}>
@@ -152,7 +151,7 @@ const DishDetail = (props) => {
           <RenderDish dish={props.dish} />
           <RenderComments
             comments={props.comments}
-            addComment={props.addComment}
+            postComment={props.postComment}
             dishId={props.dish.id}
           />
         </div>
@@ -185,7 +184,7 @@ class CommentForm extends Component {
   }
 
   hadnleSubmit(values) {
-    this.props.addComment(
+    this.props.postComment(
       this.props.dishId,
       values.rating,
       values.author,
